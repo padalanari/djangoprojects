@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <table align="center" border="2">
+            <caption>Student information</caption>
+            <tr>
+                <th>Idno</th>
+                <th>Name</th>
+                <th>Marks</th>
+            </tr>
+            <!--<tr>
+                <th>sub1</th>
+                <th>sub2</th>
+                <th>sub3</th>
+                <th>sub4</th>
+                <th>sub5</th>
+                <th>sub6</th>
+            </tr> -->
+<!--#data is key and value is list type, we are applying loop on list, we are -->
+            {% for record in data %}
+                <tr>
+                    <td>{{record.idno}}</td>
+                    <td>{{record.name}}</td>
+                    <td>{{record.marks}}</td>
+                </tr>
+            {% endfor%}
+
+        </table>
+    </body>
+</html>
