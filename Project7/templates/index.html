@@ -6,26 +6,41 @@
     </head>
     <body>
         <table align="center" border="2">
-            <caption>Student information</caption>
+            <caption><B><h2>Student information</h2><B></caption>
             <tr>
-                <th>Idno</th>
-                <th>Name</th>
-                <th>Marks</th>
+                <th rowspan="2">Idno</th>
+                <th rowspan="2">Name</th>
+                <th colspan="6">Marks</th>
             </tr>
-            <!--<tr>
+            <tr>
                 <th>sub1</th>
                 <th>sub2</th>
                 <th>sub3</th>
                 <th>sub4</th>
                 <th>sub5</th>
                 <th>sub6</th>
-            </tr> -->
+            </tr>
 <!--#data is key and value is list type, we are applying loop on list, we are -->
             {% for record in data %}
                 <tr>
                     <td>{{record.idno}}</td>
                     <td>{{record.name}}</td>
-                    <td>{{record.marks}}</td>
+                        {% for subject in record.marks %}
+                            <!-- <td>{{subject}}</td>  simply prints without styles -->
+                            {% if subject < 35 %}
+                                <td style="background-color:red; color:white;">
+                                    {{subject}}
+                                </td>
+                            {% elif subject == "A" %}
+                                <td style="background-color:yellow; color:black;">
+                                    {{subject}}
+                                </td>
+                            {% else %}
+                                <td style="background-color:green; color:white;">
+                                    {{subject}}
+                                </td>
+                            {% endif%}
+                        {%endfor%}
                 </tr>
             {% endfor%}
 
