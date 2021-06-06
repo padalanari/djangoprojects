@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <link rel="stylesheet" href="{% static 'mystyle.css' %}">
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <table align="center" border="2">
+            <caption><B><h2>Student information</h2><B></caption>
+            <tr>
+                <th id="one" rowspan="2">Idno</th>
+                <th id="one" rowspan="2">Name</th>
+                <th id="one" colspan="6">Marks</th>
+            </tr>
+            <tr>
+                <th>sub1</th>
+                <th>sub2</th>
+                <th>sub3</th>
+                <th>sub4</th>
+                <th>sub5</th>
+                <th>sub6</th>
+            </tr>
+<!--#data is key and value is list type, we are applying loop on list, we are -->
+            {% for record in data %}
+                <tr>
+                    <td>{{record.idno}}</td>
+                    <td>{{record.name}}</td>
+                        {% for subject in record.marks %}
+                            <!-- <td>{{subject}}</td>  simply prints without styles -->
+                            {% if subject < 35 %}
+                                <td style="background-color:red; color:white;">
+                                    {{subject}}
+                                </td>
+                            {% elif subject == "A" %}
+                                <td style="background-color:yellow; color:black;">
+                                    {{subject}}
+                                </td>
+                            {% else %}
+                                <td style="background-color:green; color:white;">
+                                    {{subject}}
+                                </td>
+                            {% endif%}
+                        {%endfor%}
+                </tr>
+            {% endfor%}
+
+        </table>
+    </body>
+</html>
